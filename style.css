@@ -1,0 +1,12 @@
+/* 
+ * Style file which contains basic styles
+ *
+ * Author:  Miguel Gonzalez <miguel-gonzalez@gmx.de>
+ * Version: 1.0
+ * Created: 2013-11-19
+ */
+
+ html, body {
+ 	margin:none;
+ 	padding:0px;
+ }
