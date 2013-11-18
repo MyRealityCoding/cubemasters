@@ -6,7 +6,46 @@
  * Created: 2013-11-19
  */
 
- html, body {
- 	margin:none;
+html, body {
+ 	margin:0px;
  	padding:0px;
- }
+}
+
+#head, #content, #footer {
+ 	text-align:center;
+}
+
+#head {
+  	background-color:#dff7ff;
+  	background-image:url(img/grass.png);
+  	background-repeat: repeat-x;
+  	background-position:bottom center;
+}
+
+#content {
+  	background-color:#986b36;
+  	background-image:url(img/noise.png);
+  	background-repeat:repeat;
+  	min-height:130px;
+}
+
+#content .gradient, #footer .gradient {
+	height:50px;
+	background-image:url(img/gradient.png);
+  	background-repeat:repeat-x;
+  	background-position: top center;
+}
+
+#content .text_content, #footer .text_footer {
+	margin-top:-30px;
+}
+
+#footer, body {
+  	background-color:#68451c;
+  	background-image:url(img/noise-dark.png);
+}
+
+#footer {
+	font-size:12px;
+	color:#a46a37;
+}
