@@ -11,6 +11,15 @@ html, body {
  	padding:0px;
 }
 
+a {
+	text-decoration: none;
+	color:#d59e3f;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
 #head, #content, #footer {
  	text-align:center;
 }
@@ -71,6 +80,11 @@ html, body {
 	color:#a46a37;
 }
 
+#footer ul li {
+	display:inline;
+	margin-right:10px;
+}
+
 /* BUTTONS */
 
 .button {
@@ -92,30 +106,11 @@ html, body {
 	border-color:#616161;
 	box-shadow:0px 0px 20px #553110;
 	cursor:pointer;
-}
-
-.button.available {
-	background-color:#6f8223;
-	border-color:#5d7012;
-}
-
-.button.available .status {
-	color:#b0cf36;
-	text-shadow:none;
-}
-
-.button.available:hover {
-	background-color:#778a29;
-	border-color:#607218;
+	text-decoration: none;
 }
 
 .server_button span {
 	display:block;
-}
-
-.server_button .info {
-	color:#556417;
-	text-shadow:none;
 }
 
 .server_button .status {
@@ -126,6 +121,50 @@ html, body {
 .server_button .ip {
 	font-size:55px;
 	margin-bottom:10px;
+}
+
+/* ONLINE */
+
+.server_button.online .info {
+	color:#556417;
+	text-shadow:none;
+}
+
+.button.online {
+	background-color:#6f8223;
+	border-color:#5d7012;
+}
+
+.button.online .status {
+	color:#b0cf36;
+	text-shadow:none;
+}
+
+.button.online:hover {
+	background-color:#778a29;
+	border-color:#607218;
+}
+
+/* OFFLINE */
+
+.server_button.offline .info {
+	color:#641717;
+	text-shadow:none;
+}
+
+.button.offline {
+	background-color:#822323;
+	border-color:#701212;
+}
+
+.button.offline .status {
+	color:#cf3636;
+	text-shadow:none;
+}
+
+.button.offline:hover {
+	background-color:#8a2929;
+	border-color:#721818;
 }
 
 
