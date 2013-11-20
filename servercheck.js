@@ -8,6 +8,8 @@
 
 var server = 'http://renerisha.no-ip.biz:25565';
 
+var space = $('<div></div>');
+
 function setStatus(status) {
 
  	var button = $('.server_button');
@@ -17,6 +19,10 @@ function setStatus(status) {
 
  	// Change text
  	button.children('.status').html(status);
+	space.hide();
+	button.fadeIn();
+
+	
  }
 
 function pingServer(ip) {
@@ -34,6 +40,15 @@ function pingServer(ip) {
 }
 
  $(document).ready(function() {
+
+	var button = $('.server_button');
+	var height = button.outerHeight();
+
+	space.height(height);
+
+	space.insertAfter(button);
+	
+	button.hide();
  	pingServer(server);
  });
 
