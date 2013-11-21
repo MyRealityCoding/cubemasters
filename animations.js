@@ -9,8 +9,8 @@
  function build() {
 
  	var head = $('#head');
- 	var width = head.width();
- 	var height = head.height();
+ 	width = head.width();
+ 	height = head.height();
  	head.append('<canvas id="canvas" width="' + width + '" height="' + height + '"></canvas>');
  	var canvas = $('#canvas');
  	canvas.css({
@@ -26,6 +26,7 @@
         this.y = y;
         this.width = width;
         this.height = height;
+        this.behavior = null;
 
         this.getLeft = function() {
             return this.x;
@@ -52,7 +53,9 @@
         }
 
         this.update = function(delta) {
-
+        	if (this.behavior != null) {
+        		this.behavior.update(delta);
+        	}
         };
 
         this.render = function(context) {
@@ -72,7 +75,46 @@ function renderArray(data, context, delta) {
     }
 }
 
+function MovingBehavior(target, speed) {
 
+	this.target = target;
+	this.leftMode = Math.random() < 0.5;
+	this.waitTime = 35000 * Math.random();
+    this.initialWaitTime = this.waitTime;
+	this.speed = speed + 0.2 * Math.random();
+	this.walkTime = 0;
+
+	if (!this.leftMode) {
+        this.target.x = width;  
+    } else {
+    	this.target.x = -target.width;
+    }
+
+    this.target.y = height - this.target.height;
+
+	this.update = function(delta) {
+
+		this.waitTime -= delta;
+
+            if (this.waitTime < 1) {
+                this.walkTime += 0.1 * Math.random();
+                var factor = this.speed + Math.abs(Math.sin(this.walkTime));
+                if (this.leftMode) {
+                    this.target.x += factor;
+                } else {
+                    this.target.x -= factor;
+                }
+            }
+
+            if (this.leftMode && this.target.x > width) {
+                this.target.x = -(width);
+                this.waitTime = this.initialWaitTime;
+            } else if (this.target.x + width < 0) {
+                this.target.x = width;
+                this.waitTime = this.initialWaitTime;
+            }
+	}
+}
 
  $(document).ready(function() {
 
@@ -88,10 +130,11 @@ function renderArray(data, context, delta) {
     var currentTime = +new Date();
     var lastTime = currentTime;
     var delta = currentTime - lastTime;
-    var creperCount = 4;
+    var creperCount = 10;
 
     for (var i = 0; i < creperCount; ++i) {
             sprites[i] = new Sprite(creeper, 0, 0, 25, 50);
+            sprites[i].behavior = new MovingBehavior(sprites[i], 0.6);
     }
 
     var renderingLoop = function () {
