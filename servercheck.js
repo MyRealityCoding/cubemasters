@@ -6,7 +6,9 @@
  * Created: 2013-11-19
  */
 
-var server = 'http://renerisha.no-ip.biz:25565';
+var server = 'http://renerisha.no-ip.biz';
+var minecraftPort = 25565;
+var minewebPort = 25566;
 
 var space = $('<div></div>');
 
@@ -30,13 +32,27 @@ function pingServer(ip) {
     $.ajax({
         url: ip,
         timeout: 3000, //set the timeout to 3 seconds
+        port: minecraftPort,
         success: function(){
             setStatus('online');
         },
         error: function(req, err){
-           setStatus('online');
+           setStatus('offline');
         }
     });
+}
+
+function update(ip) {
+	$.ajax({
+                type: "GET",
+                url: "proxy.php?url=" + ip + ":" + minewebPort,
+                dataType: "json",
+                crossDomain: true,
+                async: true,
+                success: function(data) {
+                    // DO SOMETHING
+                }
+            });
 }
 
  $(document).ready(function() {
@@ -50,9 +66,12 @@ function pingServer(ip) {
 	
 	button.hide();
  	pingServer(server);
+ 	update(server);
+
  });
 
 window.setInterval(function() {
 	pingServer(server);
+	update(server);
 }, 10000);
 
