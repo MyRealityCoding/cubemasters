@@ -1,0 +1,8 @@
+{
+  "name" : "name-of-your-server",
+  "ip" : "server-ip",
+  "port" : "mineweb-port",
+  "forum" : "link-to-forum",
+  "map" : "link-to-map",
+  "website" : "link-to-your-website"
+}
