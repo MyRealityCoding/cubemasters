@@ -130,11 +130,12 @@ function MovingBehavior(target, speed) {
     var currentTime = +new Date();
     var lastTime = currentTime;
     var delta = currentTime - lastTime;
-    var creperCount = 10;
+    var creperCount = 6;
 
     for (var i = 0; i < creperCount; ++i) {
-            sprites[i] = new Sprite(creeper, 0, 0, 25, 50);
-            sprites[i].behavior = new MovingBehavior(sprites[i], 0.6);
+    		var scale = 15 * Math.random();
+            sprites[i] = new Sprite(creeper, 0, 0, 20 + scale, 45 + scale);
+            sprites[i].behavior = new MovingBehavior(sprites[i], 0.6 + Math.random() * 1.0);
     }
 
     var renderingLoop = function () {
