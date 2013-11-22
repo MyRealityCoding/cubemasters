@@ -56,14 +56,10 @@ a:hover {
 	font-size:110px;
 	font-weight: bold;
 	letter-spacing: 0px;
-	color:#829633;
+	color:#333;
 	padding-bottom:50px;
 	padding-top:30px;
 	text-shadow:0px 0px 10px #fff;
-}
-
-.banner .special {
-	color:#333;
 }
 
 #content .gradient, #footer .gradient {
