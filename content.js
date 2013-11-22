@@ -75,7 +75,22 @@ function update() {
 function setContent() {
     $('.ip').html(content.ip);
     $('.server_button').attr('href', content.website);
+    $('#map').attr('href', content.map);
+    $('#forum').attr('href', content.forum);
     $('.banner').html(content.name);
+}
+
+function generatePlayers(players) {
+
+    var player_count = 4;
+    var container = $('.players');
+
+    for (var i = 0; i < player_count; ++i) {
+
+        var element = '<div class="player button table"><div class="icon cell"><img src="img/icon-online.png" /></div><div class="name cell">Player name</div></div>';
+
+        container.append(element);
+    }
 }
 
  $(document).ready(function() {
@@ -86,6 +101,7 @@ function setContent() {
 	button.hide();
     setContent();
  	update();
+    generatePlayers(null);
 
  });
 

@@ -34,6 +34,20 @@ a:hover {
 	text-decoration: underline;
 }
 
+.table {
+	display:table !important;
+	width:100%;
+	table-layout: fixed;
+}
+
+.row {
+	display:table-row !important;
+}
+
+.cell {
+	display:table-cell !important;
+}
+
 #head, #content, #footer {
  	text-align:center;
 }
@@ -98,12 +112,28 @@ a:hover {
 
 /* BUTTONS */
 
-.button {
+#menu {
+	margin-top:20px;
+}
+
+#menu .button {
 	display:block;
-	background-color:#777;
+}
+
+#menu .button.left {
+	margin-right:10px;
+}
+
+#menu .button.right {
+	margin-left:10px;
+}
+
+.button {
+	display:block;	
 	padding:25px;
-	border:4px solid #666;
-	color:white;
+	background-color:#5f3815;
+	border:4px solid #4b2d13;
+	color:#d59e3f;
 	
 	font-size: 24px;
 	background-image:url(img/button.png);
@@ -113,11 +143,16 @@ a:hover {
 }
 
 .button:hover {
-	background-color:#717171;
-	border-color:#616161;
+	color:#b4d91e;
+	background-color:#60791c;
+	border-color:#465717;
 	box-shadow:0px 0px 20px #553110;
 	cursor:pointer;
 	text-decoration: none;
+}
+
+.server_button {
+	color:white !important;
 }
 
 .server_button span {
@@ -144,19 +179,19 @@ a:hover {
 	text-shadow:none;
 }
 
-.button.online {
-	background-color:#6f8223;
-	border-color:#5d7012;
+.button.online, .player {
+	background-color:#60791c;
+	border-color:#465717;
 }
 
-.button.online .status {
-	color:#b0cf36;
+.button.online .status, .player {
+	color:#b4d91e;
 	text-shadow:none;
 }
 
-.button.online:hover {
-	background-color:#778a29;
-	border-color:#607218;
+.button.online:hover, .player:hover {
+	background-color:#60791c;
+	border-color:#465717;
 }
 
 /* OFFLINE */
@@ -213,4 +248,42 @@ a:hover {
 		margin-top:10px;
 		margin-bottom:10px;
 	}
+}
+
+/* PLAYERS */
+
+.players {
+	margin-top:60px;
+}
+
+.player {
+	margin-top:20px;
+	padding:0px;
+	vertical-align:top;
+	table-layout:auto;
+	text-align:left;
+	padding-top:20px;
+	padding-bottom:20px;
+}
+
+.player .name {
+	font-size:44px;
+	vertical-align: middle;
+	padding-left:21px;
+}
+
+.player .icon img {	
+	width:30px;
+	height:30px;
+	margin-left:20px;
+}
+
+.player .icon {
+	width:30px;
+	height:30px;
+	vertical-align: middle;
+}
+
+.player .name {
+	display:inline;
 }
