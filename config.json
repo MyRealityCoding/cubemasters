@@ -1,7 +1,7 @@
 {
   "name" : "mineweb",
-  "ip" : "server-ip",
-  "port" : "mineweb-port",
+  "ip" : "localhost",
+  "port" : "25566",
   "forum" : "link-to-forum",
   "map" : "link-to-map",
   "website" : "link-to-your-website"

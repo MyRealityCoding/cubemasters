@@ -62,12 +62,15 @@ function update() {
                 dataType: "json",
                 crossDomain: true,
                 async: true,
-                timeout: 1000,
+                timeout: 2000,
                 success: function(data) {
                     setStatus('online');
+                    generatePlayers(data['players']);
+
                 },
-                error: function(req, err) {
+                error: function(xhr, status, error) {
                 	setStatus('offline');
+                    console.log("jqXHR: " + xhr.status + "\ntextStatus: " + status + "\nerrorThrown: " + error);
                 }
             });
 }
@@ -82,14 +85,76 @@ function setContent() {
 
 function generatePlayers(players) {
 
-    var player_count = 4;
+    var player_count = players.length;
     var container = $('.players');
 
+    container.html("");
+
+    // Order players by level
+    players.sort(function(a, b) {
+        if (a.level > b.level) {
+            return 1;
+        } else if (a.level < b.level) {
+            return -1;
+        } else {
+            return 0;
+        }
+    });
+
     for (var i = 0; i < player_count; ++i) {
+        generatePlayer(players[i], container);
+    }
+}
 
-        var element = '<div class="player button table"><div class="icon cell"><img src="img/icon-online.png" /></div><div class="name cell">Player name</div></div>';
+function generatePlayer(player, container) {
 
-        container.append(element);
+    var playerState = player.online === 'true' ? 'online' : 'offline';
+    var element = '<div class="player ' + playerState + '"><div class="table"><div class="row">';
+
+    if (player.level === '') {
+        player.level = 'n/a';
+    }
+
+    var level = '<div class="cell"><span class="level">' + player.level + "</span></div>";
+
+    var label = '<div class="cell"><span class="name">' + player.name + '</span></div>';
+
+
+    element += level;
+    element += label;
+
+    container.append(element + '</div></div></div>');
+
+    var namebox = container.children('.player').last().children('.table').last().children('.row').last().children('.cell').last().children('.name');
+
+    if (player.op == 'true') {
+        namebox.prepend('<span class="op">(op)</span>');
+    }
+
+    if (player.online === 'true') {
+        var life = '(' + Math.round(player.health) + '/' + Math.round(player.healthMax) + ')';
+
+        var percentage = player.health * 100 / player.healthMax;
+        var lifeClass = 'life';
+
+        if (percentage > 60) {
+            lifeClass += ' high';
+        } else if (percentage < 60 && percentage > 20) {
+            lifeClass += ' medium';
+        } else if (percentage > 0 && percentage < 20) {
+            lifeClass += ' low';
+        }
+
+
+        if (player.dead === 'true') {
+            life = '(dead)';
+            lifeClass += ' dead';
+        }
+
+        namebox.append('<span class="' + lifeClass + '">' + life + '</span>');
+        namebox.append('<span class="xp">(' + Math.round(player.xp * 100) + '% EXP)</span>');
+    } else {
+        namebox.append(' (Offline)');
     }
 }
 
@@ -101,7 +166,6 @@ function generatePlayers(players) {
 	button.hide();
     setContent();
  	update();
-    generatePlayers(null);
 
  });
 

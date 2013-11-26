@@ -128,7 +128,7 @@ a:hover {
 	margin-left:10px;
 }
 
-.button {
+.button, .level, .name {
 	display:block;	
 	padding:25px;
 	background-color:#5f3815;
@@ -217,6 +217,81 @@ a:hover {
 }
 
 
+
+/* PLAYERS */
+
+.players {
+	font-size:45px;
+	margin-top:30px;
+}
+
+.player {
+	margin-top:10px;
+}
+
+.player .level {
+	color:#b4d91e;
+	display:inline-block;
+	min-width:24px;
+	text-align:center;
+}
+
+.player .op {
+	color:#713fbc;
+	margin-right:7px;
+}
+
+.player .life, .player .xp {
+	margin-left:7px;
+	font-size:18px;
+	vertical-align:middle;
+}
+
+.player .xp {
+	color:#4badc6;
+}
+
+.player .life.dead {
+	color:#d20a0a;
+}
+
+.player .life.high {
+	color:#b4d91e;
+}
+
+.player .life.medium {
+	color:#f3c525;
+}
+
+.player .life.low {
+	color:#cd3838;
+}
+
+.player.offline {
+	opacity:0.6;
+}
+
+.player.offline .name,
+.player.offline .level {
+	color:#999;
+	background-color:#444;
+	border-color:#333;
+}
+
+.player, .player:hover {
+	background:none;
+}
+
+.player .table {
+	table-layout:auto;
+	text-align:left;
+}
+
+.player .cell {
+	padding:5px;
+}
+
+
 /* MEDIA QUERIES */
 
 @media screen and (max-width: 800px) {
@@ -248,42 +323,4 @@ a:hover {
 		margin-top:10px;
 		margin-bottom:10px;
 	}
-}
-
-/* PLAYERS */
-
-.players {
-	margin-top:60px;
-}
-
-.player {
-	margin-top:20px;
-	padding:0px;
-	vertical-align:top;
-	table-layout:auto;
-	text-align:left;
-	padding-top:20px;
-	padding-bottom:20px;
-}
-
-.player .name {
-	font-size:44px;
-	vertical-align: middle;
-	padding-left:21px;
-}
-
-.player .icon img {	
-	width:30px;
-	height:30px;
-	margin-left:20px;
-}
-
-.player .icon {
-	width:30px;
-	height:30px;
-	vertical-align: middle;
-}
-
-.player .name {
-	display:inline;
 }
