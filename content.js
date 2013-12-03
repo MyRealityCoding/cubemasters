@@ -92,7 +92,7 @@ function generatePlayers(players) {
 
     // Order players by level
     players.sort(function(a, b) {
-        if (a.level > b.level) {
+        if (a.level < b.level) {
             return 1;
         } else if (a.level < b.level) {
             return -1;
@@ -115,9 +115,9 @@ function generatePlayer(player, container) {
         player.level = 'n/a';
     }
 
-    var level = '<div class="cell"><span class="level">' + player.level + "</span></div>";
+    var level = '<div class="cell levelcell"><span class="level">' + player.level + "</span></div>";
 
-    var label = '<div class="cell"><span class="name">' + player.name + '</span></div>';
+    var label = '<div class="cell namecell"><span class="name">' + player.name + '</span></div>';
 
 
     element += level;
@@ -170,6 +170,6 @@ function generatePlayer(player, container) {
  });
 
 window.setInterval(function() {
-	update();
+	//update();
 }, 10000);
 

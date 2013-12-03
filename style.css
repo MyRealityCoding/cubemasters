@@ -232,8 +232,12 @@ a:hover {
 .player .level {
 	color:#b4d91e;
 	display:inline-block;
-	min-width:24px;
+	width:24px;
 	text-align:center;
+}
+
+.player .levelcell {
+	width:24px;
 }
 
 .player .op {
